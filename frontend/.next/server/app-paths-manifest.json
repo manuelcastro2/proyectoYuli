@@ -1,0 +1,7 @@
+{
+  "/page": "app/page.js",
+  "/dashboard/citas/page": "app/dashboard/citas/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/citas/agendar-citas/page": "app/dashboard/citas/agendar-citas/page.js",
+  "/dashboard/usuarios/page": "app/dashboard/usuarios/page.js"
+}
