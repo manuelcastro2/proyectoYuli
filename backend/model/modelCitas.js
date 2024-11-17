@@ -18,7 +18,7 @@ export const getByIdPaciente = async (id) => {
 export const getByIdPMedico = async (id) => {
     return await pool.query(`SELECT DISTINCT * FROM citas
     JOIN usuarios_servicio ON citas.id_usuarios_servicio = usuarios_servicio.id_usuarios_servicio
-    JOIN servicio ON usuarios_servicio.id_servicio = servicio.id_servicio
+    JOIN usuarios ON usuarios.id_usuarios = citas.id_usuarios
     WHERE usuarios_servicio.id_usuarios = $1`, [id])
 }
 

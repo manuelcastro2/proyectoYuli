@@ -2,6 +2,6 @@
   "/page": "app/page.js",
   "/dashboard/citas/page": "app/dashboard/citas/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/dashboard/citas/agendar-citas/page": "app/dashboard/citas/agendar-citas/page.js",
-  "/dashboard/usuarios/page": "app/dashboard/usuarios/page.js"
+  "/dashboard/usuarios/mi-informacion/page": "app/dashboard/usuarios/mi-informacion/page.js",
+  "/dashboard/citas/actualizar-citas/[id]/page": "app/dashboard/citas/actualizar-citas/[id]/page.js"
 }

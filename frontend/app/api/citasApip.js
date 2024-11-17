@@ -30,7 +30,7 @@ export const update = async (id, dataCitas) => {
     return citas.data
 }
 
-export const deleteUsuario = async (id) => {
+export const deleteCitas = async (id) => {
     const citas = await axios.delete(`${citasApi}/${id}`)
     return citas.data
 }

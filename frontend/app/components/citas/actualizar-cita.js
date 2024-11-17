@@ -1,11 +1,28 @@
 "use client"
 import { useState } from "react"
+import { useParams,useRouter } from "next/navigation"
+import { update } from "@/app/api/citasApip"
 
 export const Actualizar_Cita = () => {
 
 
     const [fecha, setFecha] = useState("")
     const [hora, setHora] = useState("")
+    const params = useParams()
+    const router=useRouter()
+
+
+    const handleCitas = async () => {
+        const dataCita = {
+            fecha_cita: fecha,
+            hora_cita: hora
+        }
+        const citas = await update(params.id,dataCita)
+
+        if(!citas.message){
+            router.push("/dashboard/citas")
+        }
+    }
 
     return (
         <>
@@ -21,7 +38,9 @@ export const Actualizar_Cita = () => {
                         <option value="">seleccione</option>
                     </select>
                 </div>
-                <button type="button">Enviar</button>
+                <button type="button" onClick={()=>{
+                    handleCitas()
+                }}>Enviar</button>
             </div>
         </>
     )

@@ -74,7 +74,7 @@ export const updateCita = async (req, res) => {
 
         const updatedUsuario = await update(req.params.id, req.body);
         if (updatedUsuario.rowCount===0) {
-            return res.status(404).json({ message: 'cita no encontrada' });
+            return res.status(200).json({ message: 'cita no encontrada' });
         }
         res.status(200).json(updatedUsuario.rows);
     } catch (err) {
@@ -91,7 +91,7 @@ export const deleteCitaC = async (req, res) => {
     try {
         const deletedusuario = await deleteCitas(req.params.id);
         if (deletedusuario.rowCount === 0) {
-            return res.status(404).json({ message: 'Cita no encontrada' });
+            return res.status(200).json({ message: 'Cita no encontrada' });
         }
         res.status(200).json({ message: 'Cita eliminado' });
     } catch (err) {
