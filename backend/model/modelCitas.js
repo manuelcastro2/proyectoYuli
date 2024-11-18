@@ -8,6 +8,13 @@ export const getAll = async () => {
         and usuarios_servicio.id_servicio=servicio.id_servicio`)
 }
 
+export const getByIdCita = async (id) => {
+    return await pool.query(`SELECT DISTINCT * FROM citas
+    JOIN usuarios_servicio ON citas.id_usuarios_servicio = usuarios_servicio.id_usuarios_servicio
+    JOIN servicio ON usuarios_servicio.id_servicio = servicio.id_servicio
+    WHERE citas.id_citas = $1`, [id])
+}
+
 export const getByIdPaciente = async (id) => {
     return await pool.query(`SELECT DISTINCT * FROM citas
     JOIN usuarios_servicio ON citas.id_usuarios_servicio = usuarios_servicio.id_usuarios_servicio
@@ -41,4 +48,8 @@ export const update = async (id, cita) => {
 
 export const deleteCitas = async (id) => {
     return await pool.query(`delete from citas where id_citas=$1`, [id])
+}
+
+export const getAllHora=async()=>{
+    return await pool.query(`select * from hora`)
 }

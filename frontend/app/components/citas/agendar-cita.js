@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from "react"
-import { create } from "@/app/api/citasApip"
+import { create,getHora } from "@/app/api/citasApip"
 import { getServicios } from "@/app/api/usuariosApi"
 
 export const Agendar_Cita = () => {
@@ -9,7 +9,7 @@ export const Agendar_Cita = () => {
     const [afeccion, setAfeccion] = useState("")
     const [frecuencia, setFrecuencia] = useState("")
     const [fecha, setFecha] = useState("")
-    const [hora, setHora] = useState("")
+    const [hora, setHora] = useState([])
     const [servicios, setServicios] = useState([])
     const data = JSON.parse(localStorage.getItem('data'))
 
@@ -38,8 +38,16 @@ export const Agendar_Cita = () => {
         }
     }
 
+    const handleHora = async () => {
+        const hora = await getHora()
+        if (hora) {
+            setHora(hora)
+        }
+    }
+
     useEffect(() => {
         handleServicios()
+        handleHora()
     }, [])
 
     return (
@@ -79,6 +87,9 @@ export const Agendar_Cita = () => {
                     <label htmlFor="hora">Hora</label>
                     <select id="hora" onChange={(e) => setHora(e.target.value)} defaultChecked={hora}>
                         <option value="">seleccione</option>
+                        {hora.map(item=>(
+                            <option key={item.hora} value={hora}>{item.hora}</option>
+                        ))}
                     </select>
                 </div>
                 <button type="button" onClick={() => {

@@ -25,30 +25,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/citas/page.js"
     ],
-    "/dashboard/usuarios/page": [
+    "/dashboard/citas/actualizar-citas/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/usuarios/page.js"
-    ],
-    "/dashboard/usuarios/mi-informacion/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/usuarios/mi-informacion/page.js"
-    ],
-    "/dashboard/usuarios/actualizar-usuario/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/usuarios/actualizar-usuario/page.js"
+      "static/chunks/app/dashboard/citas/actualizar-citas/[id]/page.js"
     ],
     "/dashboard/citas/agendar-citas/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/citas/agendar-citas/page.js"
     ],
-    "/dashboard/citas/actualizar-citas/[id]/page": [
+    "/dashboard/usuarios/mi-informacion/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/citas/actualizar-citas/[id]/page.js"
+      "static/chunks/app/dashboard/usuarios/mi-informacion/page.js"
     ]
   }
 }

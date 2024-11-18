@@ -7,6 +7,11 @@ export const getAll = async () => {
     return citas.data
 }
 
+export const getById = async (id) => {
+    const citas = await axios.get(`${citasApi}/cita/${id}`)
+    return citas.data
+}
+
 export const getByIdPaciente = async (id) => {
     const citas = await axios.get(`${citasApi}/paciente/${id}`)
     return citas.data
@@ -33,4 +38,9 @@ export const update = async (id, dataCitas) => {
 export const deleteCitas = async (id) => {
     const citas = await axios.delete(`${citasApi}/${id}`)
     return citas.data
+}
+
+export const getHora = async () => {
+    const hora = await axios.get(`${citasApi}/hora`)
+    return hora.data
 }

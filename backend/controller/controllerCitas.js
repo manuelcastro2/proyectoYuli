@@ -1,5 +1,5 @@
 import {
-    create, deleteCitas, getAll, getByIdPMedico, getByIdPaciente, update
+    create, deleteCitas, getAll, getByIdPMedico, getByIdPaciente, update, getAllHora,getByIdCita
 } from './../model/modelCitas.js'
 import { validarCitas, validarPartialCitas } from './../schemas/schemaCitas.js'
 
@@ -17,10 +17,27 @@ export const getAllCitas = async (req, res) => {
     }
 };
 
+export const getByIdCitas = async (req, res) => {
+    try {
+        const cita = await getByIdCita(req.params.id);
+        if (cita.rowCount === 0) {
+            return res.status(404).json({ message: 'cita no encontrada' });
+        }
+        res.status(200).json(cita.rows);
+    } catch (err) {
+        res.status(500).json({
+            message: {
+                info: 'Error al obtener las citas',
+                error: err
+            }
+        });
+    }
+};
+
 export const getByIdCitasPaciente = async (req, res) => {
     try {
         const usuario = await getByIdPaciente(req.params.id);
-        if (usuario.rowCount===0) {
+        if (usuario.rowCount === 0) {
             return res.status(404).json({ message: 'cita no encontrada' });
         }
         res.status(200).json(usuario.rows);
@@ -37,7 +54,7 @@ export const getByIdCitasPaciente = async (req, res) => {
 export const getByIdCitasMedico = async (req, res) => {
     try {
         const usuario = await getByIdPMedico(req.params.id);
-        if (usuario.rowCount===0) {
+        if (usuario.rowCount === 0) {
             return res.status(404).json({ message: 'cita no encontrada' });
         }
         res.status(200).json(usuario.rows);
@@ -73,7 +90,7 @@ export const updateCita = async (req, res) => {
         if (error.error) return res.status(400).json({ message: { info: 'tipo de dato mal enviado', error: error.error } });
 
         const updatedUsuario = await update(req.params.id, req.body);
-        if (updatedUsuario.rowCount===0) {
+        if (updatedUsuario.rowCount === 0) {
             return res.status(200).json({ message: 'cita no encontrada' });
         }
         res.status(200).json(updatedUsuario.rows);
@@ -105,6 +122,19 @@ export const deleteCitaC = async (req, res) => {
     }
 };
 
+export const getAllHoraC = async (req,res) => {
+    try {
+        const usuarios = await getAllHora();
+        res.status(200).json(usuarios.rows);
+    } catch (err) {
+        res.status(500).json({
+            message: {
+                info: 'Error al obtener las horas',
+                error: err
+            }
+        });
+    }
+}
 
 
 
